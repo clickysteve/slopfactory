@@ -1,0 +1,53 @@
+/*
+ * Slop Factory design tokens. Colours follow the "Colour" palette shared by ANVIL, emmm,
+ * Feelers and FrakMC: warm paper, dark ink, one strong colour per functional area.
+ * Every --cat-* colour must keep at least 4.5:1 contrast with --paper (tested).
+ */
+:root {
+  /* Surfaces and ink */
+  --desktop: #e9e4d6;
+  --desktop-dot: #d6d0bf;
+  --paper: #fbf8ef;
+  --paper-sunk: #f2eee2;
+  --ink: #1d1c18;
+  --dim: #5f5a4f;
+  --rule: #1d1c18;
+
+  /* Departments */
+  --cat-generative: #8a2f5e;
+  --cat-audio: #1d6a86;
+  --cat-video: #2c7149;
+  --cat-photo: #8f5d00;
+  --cat-other: #6a3fa0;
+  --cat-places: #3b3a36;
+
+  /* States */
+  --activity: #c0392b;
+  --beta: #8f5d00;
+  --focus: #2b78c9;
+
+  /* Logo colours follow the departments */
+  --logo-ink: var(--ink);
+  --logo-smoke: #8c8576;
+  --logo-1: var(--cat-generative);
+  --logo-2: var(--cat-audio);
+  --logo-3: var(--cat-video);
+  --logo-4: var(--cat-photo);
+
+  /* Type */
+  --pixel: 'Silkscreen', ui-monospace, monospace;
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  --text-xs: 11px;
+  --text-s: 12.5px;
+  --text-m: 14px;
+  --text-l: 16px;
+
+  /* Space and lines */
+  --gap: 12px;
+  --gutter: 16px;
+  --line: 2px;
+  --shadow: 3px 3px 0 var(--ink);
+  --shadow-small: 2px 2px 0 var(--ink);
+  --max: 1600px;
+  --menubar-h: 40px;
+}
