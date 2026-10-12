@@ -66,6 +66,27 @@ test('navigation jumps to each department', async ({ page }) => {
   }
 });
 
+test('the menu highlights the department you picked, including ones that share a row', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  const nav = page.locator('.menubar-nav');
+  for (const c of categories) {
+    await nav.getByRole('link', { name: c.navLabel, exact: true }).click();
+    await expect(nav.locator('a[aria-current="true"]')).toHaveText([c.navLabel]);
+  }
+  await nav.getByRole('link', { name: 'Elsewhere', exact: true }).click();
+  await expect(nav.locator('a[aria-current="true"]')).toHaveText(['Elsewhere']);
+});
+
+test('the menu follows scrolling, and highlights Elsewhere at the bottom of the page', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  const nav = page.locator('.menubar-nav');
+  await expect(nav.locator('a[aria-current="true"]')).toHaveCount(0);
+  await page.locator('#generative .grid').evaluate((el) => el.scrollIntoView({ block: 'center' }));
+  await expect(nav.locator('a[aria-current="true"]')).toHaveText(['Generative']);
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  await expect(nav.locator('a[aria-current="true"]')).toHaveText(['Elsewhere']);
+});
+
 test('launch buttons go straight to the live apps in a new tab', async ({ page }) => {
   for (const p of projects.filter((x) => x.links.launch)) {
     const link = page.locator(`#tool-${p.id} a[data-action="launch"]`);

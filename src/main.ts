@@ -58,28 +58,76 @@ window.addEventListener('hashchange', openFromHash);
 openFromHash();
 
 // Mark the department currently on screen in the menu bar.
+//  - Every department crossing a line 40% down the screen is current. Departments that share
+//    a row (see .dept-cluster) are current together.
+//  - At the very bottom of the page the last section is current, since short sections there
+//    can never reach the line.
+//  - A department picked from the menu stays current until it has been on screen and then
+//    scrolled away, so the item you clicked is the one that lights up.
 const navLinks = new Map<string, HTMLAnchorElement>();
 for (const a of document.querySelectorAll<HTMLAnchorElement>('.menubar-nav a[href^="#"]')) {
   navLinks.set(a.hash.slice(1), a);
 }
-if ('IntersectionObserver' in window && navLinks.size) {
-  const visible = new Set<string>();
-  const observer = new IntersectionObserver(
-    (entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) visible.add(e.target.id);
-        else visible.delete(e.target.id);
-      }
-      const current = [...navLinks.keys()].find((id) => visible.has(id));
-      for (const [id, a] of navLinks) {
-        if (id === current) a.setAttribute('aria-current', 'true');
-        else a.removeAttribute('aria-current');
-      }
-    },
-    { rootMargin: '-45% 0px -50% 0px' },
-  );
-  for (const id of navLinks.keys()) {
-    const section = document.getElementById(id);
-    if (section) observer.observe(section);
+const sections = [...navLinks.keys()]
+  .map((id) => document.getElementById(id))
+  .filter((el): el is HTMLElement => el !== null);
+
+let picked: { id: string; seen: boolean } | null = null;
+let current: string[] = [];
+
+function onScreen(el: HTMLElement): boolean {
+  const r = el.getBoundingClientRect();
+  return r.bottom > 0 && r.top < window.innerHeight;
+}
+
+function currentDepartments(): string[] {
+  if (picked) {
+    const el = document.getElementById(picked.id);
+    if (el && onScreen(el)) picked.seen = true;
+    else if (picked.seen) picked = null;
+    if (picked) return [picked.id];
+  }
+  const root = document.documentElement;
+  if (window.scrollY > 0 && window.scrollY + window.innerHeight >= root.scrollHeight - 2) {
+    return sections.length ? [sections[sections.length - 1]!.id] : [];
+  }
+  const line = window.innerHeight * 0.4;
+  const crossing = sections.filter((el) => {
+    const r = el.getBoundingClientRect();
+    return r.top <= line && r.bottom > line;
+  });
+  if (crossing.length) return crossing.map((el) => el.id);
+  // Between two departments: keep the last one, unless we are back above the first.
+  const first = sections[0];
+  return first && first.getBoundingClientRect().top > line ? [] : current;
+}
+
+function updateMenu(): void {
+  current = currentDepartments();
+  for (const [id, a] of navLinks) {
+    if (current.includes(id)) a.setAttribute('aria-current', 'true');
+    else a.removeAttribute('aria-current');
   }
 }
+
+let queued = false;
+window.addEventListener(
+  'scroll',
+  () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      updateMenu();
+    });
+  },
+  { passive: true },
+);
+window.addEventListener('resize', updateMenu);
+for (const [id, a] of navLinks) {
+  a.addEventListener('click', () => {
+    picked = { id, seen: false };
+    updateMenu();
+  });
+}
+updateMenu();
