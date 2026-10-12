@@ -30,6 +30,7 @@ function catalogue(): Plugin {
           SITE_SUBTITLE: site.subtitle,
           SITE_DESCRIPTION: site.description,
           SITE_URL: site.url,
+          SITE_LABEL: site.label,
           SOCIAL_IMAGE: new URL(site.socialImage, site.url).href,
           FAVICON: faviconDataUri(),
         };
