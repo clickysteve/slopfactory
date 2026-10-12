@@ -56,6 +56,9 @@ test('loads every image', async ({ page }) => {
 });
 
 test('navigation jumps to each department', async ({ page }) => {
+  // Instant scrolling: with smooth scrolling, clicking two departments that share a row in
+  // quick succession can cancel the first scroll part-way on slow machines.
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   for (const c of categories) {
     await page.locator('.menubar-nav').getByRole('link', { name: c.navLabel, exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`#${c.id}$`));
