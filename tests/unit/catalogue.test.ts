@@ -7,6 +7,7 @@ import {
   featuredProjects,
   projectActions,
   projectsInCategory,
+  screenshotLink,
   screenshotPaths,
   validateCatalogue,
 } from '../../src/catalogue.ts';
@@ -69,6 +70,21 @@ describe('the catalogue data', () => {
     for (const p of projectsInCategory(projects, 'generative')) expect(p.links.launch).toMatch(/allmyfriendsaresynths\.com\/$/);
   });
 
+  it('marks the generative family as released, not experimental', () => {
+    for (const p of projectsInCategory(projects, 'generative')) expect(p.status, p.id).toBe('live');
+  });
+
+  it('lists the AMFAS Music Library as an audio tool, and Music Collection DB as another place', () => {
+    expect(projects.find((p) => p.id === 'amfas-music-library')?.category).toBe('audio');
+    expect(places.some((pl) => pl.url.includes('musiclibrary'))).toBe(false);
+    expect(projects.some((p) => p.links.launch?.includes('music.clickysteve.com'))).toBe(false);
+    expect(places.find((pl) => pl.id === 'music-collection')?.url).toBe('https://music.clickysteve.com/');
+  });
+
+  it('includes the EarthBound save editor in Other Creative Tools', () => {
+    expect(projects.find((p) => p.id === 'oh-mother')?.category).toBe('other');
+  });
+
   it('includes The Good Bits', () => {
     expect(projects.find((p) => p.id === 'good-bits')?.links.launch).toBe('https://thegoodbits.allmyfriendsaresynths.com/');
   });
@@ -110,6 +126,12 @@ describe('queries', () => {
       project({ links: { docs: 'https://e.com/d', source: 'https://e.com/s', download: 'https://e.com/dl', launch: 'https://e.com/' } }),
     );
     expect(all.map((a) => a.kind)).toEqual(['launch', 'download', 'source', 'docs']);
+  });
+
+  it('links screenshots to the live app first, then the source, else nowhere', () => {
+    expect(screenshotLink(project({ links: { launch: 'https://e.com/', source: 'https://e.com/s' } }))?.url).toBe('https://e.com/');
+    expect(screenshotLink(project({ links: { download: 'https://e.com/dl', source: 'https://e.com/s' } }))?.url).toBe('https://e.com/s');
+    expect(screenshotLink(project({ links: { docs: 'https://e.com/d' } }))).toBeUndefined();
   });
 
   it('calls documentation a manual when there is nothing to launch or download', () => {

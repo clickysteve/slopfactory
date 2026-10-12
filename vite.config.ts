@@ -33,7 +33,7 @@ function catalogue(): Plugin {
           SOCIAL_IMAGE: new URL(site.socialImage, site.url).href,
           FAVICON: faviconDataUri(),
         };
-        const body = renderBody({ projects, categories, places, site, year: new Date().getFullYear() });
+        const body = renderBody({ projects, categories, places, site });
         return html
           .replace(/%([A-Z_]+)%/g, (m, key: string) => (key in vars ? esc(vars[key]!) : m))
           .replace('<!--catalogue-->', body);

@@ -8,7 +8,7 @@ import type { Project } from '../../src/data/types.ts';
 import { esc } from '../../src/render/html.ts';
 import { renderBody, renderCard, renderInfoWindow, type PageData } from '../../src/render/page.ts';
 
-const data: PageData = { projects, categories, places, site, year: 2026 };
+const data: PageData = { projects, categories, places, site };
 const html = renderBody(data);
 
 function attrs(tag: string, source = html): Array<Record<string, string>> {
@@ -71,7 +71,6 @@ describe('the rendered page', () => {
     const known = new Set([
       ...projects.flatMap((p) => Object.values(p.links)),
       ...places.map((p) => p.url),
-      site.authorUrl,
       site.labelUrl,
     ]);
     for (const url of rendered) expect(known.has(url!), url).toBe(true);
@@ -90,6 +89,29 @@ describe('the rendered page', () => {
     for (const b of attrs('button')) expect(b.type).toBe('button');
     for (const p of projects) expect(html).toContain(`commandfor="info-${p.id}" command="show-modal"`);
     expect(html.match(/class="closebox"[^>]*aria-label="Close"/g)).toHaveLength(projects.length);
+  });
+
+  it('links each screenshot to the live app, or to the source when there is no live app', () => {
+    for (const p of projects) {
+      const card = renderCard(p);
+      const link = attrs('a', card).find((a) => a.class === 'shot-link');
+      const expected = p.links.launch ?? p.links.source;
+      if (!expected) {
+        expect(link, p.id).toBeUndefined();
+        continue;
+      }
+      expect(link?.href, p.id).toBe(expected);
+      expect(link?.target).toBe('_blank');
+      // The button beside it goes to the same place, so the image link stays out of the tab order.
+      expect(link?.tabindex).toBe('-1');
+      expect(renderInfoWindow(p, categories)).toContain(`class="shot-link" href="${esc(expected)}"`);
+    }
+  });
+
+  it('has no author credit in the footer', () => {
+    const footer = html.slice(html.indexOf('<footer'), html.indexOf('</footer>'));
+    expect(footer).not.toContain('All software by');
+    expect(footer).not.toMatch(/©/);
   });
 
   it('escapes text from the data', () => {

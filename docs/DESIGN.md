@@ -77,7 +77,10 @@ the pixel face.
   each take a full-width band.
 - **Cards.** Screenshot (16:10 crop, `object-position` per project), name and status badge,
   platform, one-sentence summary, then buttons: LAUNCH (or DOWNLOAD), SOURCE, INFO. LAUNCH is
-  always on the card, so no one has to open a window to start an app. Below 600 px cards turn
+  always on the card, so no one has to open a window to start an app. The screenshot itself
+  links to the live app, or to the source when there is no live app; hovering it shows a
+  small LAUNCH or SOURCE label. That link is kept out of the tab order because the button
+  beside it goes to the same place. Below 600 px cards turn
   sideways: thumbnail beside the name, summary and buttons full width beneath.
 - **Other Places.** Deliberately quieter: a dark grey bar, small text-only link tiles, no
   images, placed after the whole catalogue.

@@ -73,6 +73,19 @@ test('launch buttons go straight to the live apps in a new tab', async ({ page }
   }
 });
 
+test('screenshots link to the live app, or the source when there is none', async ({ page }) => {
+  for (const p of projects) {
+    const target = p.links.launch ?? p.links.source;
+    const link = page.locator(`#tool-${p.id} .card-shot a`);
+    if (!target) {
+      await expect(link).toHaveCount(0);
+      continue;
+    }
+    await expect(link).toHaveAttribute('href', target);
+    await expect(link).toHaveAttribute('target', '_blank');
+  }
+});
+
 test('an information window opens, traps focus, closes on Escape and returns focus', async ({ page }) => {
   const p = projects.find((x) => x.id === 'anvil')!;
   const button = page.locator(`#tool-${p.id} .btn--info`);

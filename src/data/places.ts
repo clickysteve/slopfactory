@@ -17,11 +17,11 @@ export const places: Place[] = [
     description: 'Small independent tape label from Glasgow. Most of the music lives here.',
   },
   {
-    id: 'music-library',
-    name: 'AMFAS Music Library',
-    kind: 'Free music',
-    url: 'https://musiclibrary.allmyfriendsaresynths.com/',
-    description: 'Creative Commons music for film-makers, vloggers and independent artists.',
+    id: 'music-collection',
+    name: 'Music Collection DB',
+    kind: 'Record collection',
+    url: 'https://music.clickysteve.com/',
+    description: 'A physical CD and vinyl collection, with years of Last.fm listening history.',
   },
   {
     id: 'shop',

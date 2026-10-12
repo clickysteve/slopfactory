@@ -50,6 +50,16 @@ export function projectActions(p: Project): Action[] {
   return actions;
 }
 
+/**
+ * Where a project's screenshot links to: the live app when there is one, otherwise its
+ * source repository. Undefined when it has neither.
+ */
+export function screenshotLink(p: Project): Action | undefined {
+  if (p.links.launch) return { kind: 'launch', label: 'Launch', url: p.links.launch };
+  if (p.links.source) return { kind: 'source', label: 'Source', url: p.links.source };
+  return undefined;
+}
+
 export interface CatalogueStats {
   titles: number;
   departments: number;

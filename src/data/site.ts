@@ -9,8 +9,6 @@ export const site = {
     'Slop Factory is a collection of creative software, experimental musical instruments and digital oddities by Stephen McLeod Blythe, aka allmyfriendsaresynths. Built with modern tools, inspired by old computers, and occasionally useful.',
     'Most of it runs in your browser. Press LAUNCH and start making a mess.',
   ],
-  author: 'Stephen McLeod Blythe',
-  authorUrl: 'https://iamsteve.in/',
   label: 'allmyfriendsaresynths',
   labelUrl: 'https://www.youtube.com/c/allmyfriendsaresynths',
   /** Used for social previews. A file in public/screenshots/. */

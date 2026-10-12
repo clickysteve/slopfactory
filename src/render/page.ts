@@ -8,6 +8,7 @@ import {
   featuredProjects,
   projectActions,
   projectsInCategory,
+  screenshotLink,
   screenshotPaths,
   sortedCategories,
   type Action,
@@ -24,12 +25,9 @@ export interface PageData {
     title: string;
     subtitle: string;
     intro: string[];
-    author: string;
-    authorUrl: string;
     label: string;
     labelUrl: string;
   };
-  year: number;
 }
 
 export const PLACES_ANCHOR = 'elsewhere';
@@ -74,7 +72,7 @@ function cardActions(p: Project, { compact = false } = {}): string {
   return `<div class="card-actions">${links.join('')}${note}${infoButton(p)}</div>`;
 }
 
-function shot(p: Project, variant: 'thumb' | 'full'): string {
+function shotImage(p: Project, variant: 'thumb' | 'full'): string {
   if (!p.screenshot) {
     return `<div class="placeholder" role="img" aria-label="${esc(`No screenshot of ${p.name} yet`)}"><span class="placeholder-name" aria-hidden="true">${esc(p.name)}</span><span class="placeholder-note" aria-hidden="true">${esc(p.platform)}</span></div>`;
   }
@@ -83,6 +81,18 @@ function shot(p: Project, variant: 'thumb' | 'full'): string {
   const [w, h] = variant === 'thumb' ? [720, 450] : [1600, 1000];
   const pos = p.screenshot.position ? ` style="object-position: ${esc(p.screenshot.position)}"` : '';
   return `<img src="${esc(src)}" alt="${esc(p.screenshot.alt)}" width="${w}" height="${h}" loading="lazy" decoding="async"${pos}>`;
+}
+
+/**
+ * The screenshot (or placeholder), linked to the live app or else the source. The link is
+ * left out of the tab order because the LAUNCH or SOURCE button beside it goes to the same place.
+ */
+function shot(p: Project, variant: 'thumb' | 'full'): string {
+  const image = shotImage(p, variant);
+  const link = screenshotLink(p);
+  if (!link) return image;
+  const what = link.kind === 'launch' ? `Launch ${p.name}` : `Source code for ${p.name}`;
+  return `<a class="shot-link" href="${esc(link.url)}"${NEW_TAB} tabindex="-1" data-label="${esc(link.label)} ${link.kind === 'launch' ? '▸' : '↗'}" data-shot="${link.kind}">${image}${srOnly(`${what} (opens in a new tab)`)}</a>`;
 }
 
 export function renderCard(p: Project, options: { featured?: boolean; categories?: readonly Category[] } = {}): string {
@@ -223,7 +233,7 @@ export function renderMain(data: PageData): string {
 export function renderFooter(data: PageData): string {
   return join([
     `<footer class="footer">`,
-    `<p>${logoSvg('logo logo--small')} <strong>${esc(data.site.title)}</strong> is a department of <a href="${esc(data.site.labelUrl)}"${NEW_TAB}>${esc(data.site.label)}${srOnly('(opens in a new tab)')}</a>. All software by <a href="${esc(data.site.authorUrl)}"${NEW_TAB}>${esc(data.site.author)}${srOnly('(opens in a new tab)')}</a>, © ${data.year}.</p>`,
+    `<p>${logoSvg('logo logo--small')} <strong>${esc(data.site.title)}</strong> is a department of <a href="${esc(data.site.labelUrl)}"${NEW_TAB}>${esc(data.site.label)}${srOnly('(opens in a new tab)')}</a>.</p>`,
     `<p class="footer-small">No cookies. No analytics. No warranty, expressed or implied. Please report any slop that escapes the factory.</p>`,
     `</footer>`,
   ]);
