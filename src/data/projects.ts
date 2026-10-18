@@ -202,6 +202,36 @@ export const projects: Project[] = [
     },
     order: 6,
   },
+  {
+    id: 'breakery',
+    name: 'The Breakery',
+    category: 'generative',
+    status: 'live',
+    platform: 'Browser',
+    summary:
+      'Bakes original drum breaks from your own one-shots: funk, hip-hop and jungle grooves with ghost notes, swing and evolving variations, exported as WAV.',
+    description: [
+      'The Breakery is a generative breakbeat instrument. You bring the ingredients (drum one-shots); it invents the recipe: an original drum performance, with a backbeat that anchors, kicks that syncopate, ghost notes that answer the snare, hats that keep time with a drummer’s accents, a feel, and a turnaround that pushes back into the top of the loop. It is not a step sequencer: you guide it with a style (FUNK, HIP-HOP, JUNGLE or BROKEN), a tempo and eight controls, and it composes.',
+      'Bake one break or a batch of eight, freeze the layers you like while baking again, and take the result away as a WAV to sample, slice and rearrange in your sampler or DAW. Your samples stay in the browser and are never uploaded; on a first visit a synthesised demo kit lets you try everything at once.',
+    ],
+    features: [
+      'Density, complexity, syncopation, ghosts, swing, humanise, variation and fills',
+      'BATCH of eight candidates; FREEZE the beat, detail, feel or kit',
+      'WAV export as bars plus tail or a seamless loop, with optional stems and MIDI file',
+      'Drop in WAV or AIFF one-shots, sorted into categories by file name',
+    ],
+    tags: ['drums', 'breakbeat', 'generative'],
+    links: {
+      launch: 'https://breakery.allmyfriendsaresynths.com/',
+      source: 'https://github.com/clickysteve/the-breakery',
+    },
+    screenshot: {
+      file: 'breakery',
+      alt: 'The Breakery with its demo kit: ingredients on the left, the FUNK recipe and bake controls above, a two-bar break in the pattern view, and a batch of eight candidates below.',
+      source: 'Captured from a local build of The Breakery repository (main at dc97fba).',
+    },
+    order: 7,
+  },
 
   // ── Audio & Music Tools ─────────────────────────────────────────────────────────────────
   {

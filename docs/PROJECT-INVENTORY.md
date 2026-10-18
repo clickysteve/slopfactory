@@ -29,6 +29,7 @@ The catalogue data itself lives in [`src/data/projects.ts`](../src/data/projects
 | 8 | **The Good Bits URL** | The README says the live app is at `clickysteve.github.io/the-good-bits/`; the Pages configuration serves it at `thegoodbits.allmyfriendsaresynths.com`, which is what the site uses. The README could be updated. |
 | 9 | **Mega-Tools URL** | Same as above: README says `clickysteve.github.io/mega-tools/`, Pages serves `mega-tools.allmyfriendsaresynths.com`. |
 | 10 | **Production domain** | `slopfactory.allmyfriendsaresynths.com` does not resolve yet. DNS has not been touched (see README › Deployment). |
+| 12 | **Generative Music blurb** | The department blurb says each instrument is "a new take on a half-forgotten piece of late-80s music software" and that "all of them play your MIDI hardware". The Breakery is neither: it plays samples and exports WAV (MIDI is file export only). Reword the blurb in `src/data/categories.ts` if that matters. |
 
 ## Included in the catalogue
 
@@ -42,6 +43,7 @@ The catalogue data itself lives in [`src/data/projects.ts`](../src/data/projects
 | **ANVIL** | <https://anvil.allmyfriendsaresynths.com/> | [anvil](https://github.com/clickysteve/anvil) | Live | Captured from the live app (Colour palette, themes generated) | Dr. T's *Tunesmith* (Jim Johnson, 1988–91). Not on iamsteve.in. |
 | **DOWNBEAT** | <https://downbeat.allmyfriendsaresynths.com/> | [downbeat](https://github.com/clickysteve/downbeat) | Live | `docs/images/downbeat.png` from the repo | Intelligent Music's *UpBeat* (1987). Docs: [Quick Start](https://github.com/clickysteve/downbeat/blob/main/docs/QUICK_START.md). Not on iamsteve.in. |
 | **SQUARED** | <https://squared.allmyfriendsaresynths.com/> | [squared](https://github.com/clickysteve/squared) | Live | Captured from a local build of the repo (main at `482b51e`), cursor moved to X 06 · Y 07 | David Snow's *MIDI Square* (Atari ST); unofficial, clean-room. Added on 18 Oct 2026. The live URL comes from the repo's README and `CNAME`; it could not be requested from the build environment, so the screenshot was taken from the same code built locally. README only; no separate docs. Not on iamsteve.in. |
+| **The Breakery** | <https://breakery.allmyfriendsaresynths.com/> | [the-breakery](https://github.com/clickysteve/the-breakery) | Live | Captured from a local build of the repo (main at `dc97fba`), demo kit, seed 4242, after BATCH | Generative breakbeat instrument for your own one-shots; no single piece of old software behind it, so no inspiration line. Added on 18 Oct 2026. The live URL comes from the repo's README and `CNAME`; it could not be requested from the build environment, so the screenshot was taken from the same code built locally. Its README notes it has not yet been evaluated by ear. See review item 12. Not on iamsteve.in. |
 
 ### Audio & Music Tools
 
