@@ -41,6 +41,7 @@ The catalogue data itself lives in [`src/data/projects.ts`](../src/data/projects
 | **FrakMC** | <https://frakmc.allmyfriendsaresynths.com/> | [frakmc](https://github.com/clickysteve/frakmc) | Live | `docs/images/qs-julia.png` from the repo | Hugh McDowell's *Fractal Music Composer 2*. Docs: [Quick Start](https://github.com/clickysteve/frakmc/blob/main/docs/QUICK-START.md). Not on iamsteve.in. |
 | **ANVIL** | <https://anvil.allmyfriendsaresynths.com/> | [anvil](https://github.com/clickysteve/anvil) | Live | Captured from the live app (Colour palette, themes generated) | Dr. T's *Tunesmith* (Jim Johnson, 1988–91). Not on iamsteve.in. |
 | **DOWNBEAT** | <https://downbeat.allmyfriendsaresynths.com/> | [downbeat](https://github.com/clickysteve/downbeat) | Live | `docs/images/downbeat.png` from the repo | Intelligent Music's *UpBeat* (1987). Docs: [Quick Start](https://github.com/clickysteve/downbeat/blob/main/docs/QUICK_START.md). Not on iamsteve.in. |
+| **SQUARED** | <https://squared.allmyfriendsaresynths.com/> | [squared](https://github.com/clickysteve/squared) | Live | Captured from a local build of the repo (main at `482b51e`), cursor moved to X 06 · Y 07 | David Snow's *MIDI Square* (Atari ST); unofficial, clean-room. Added on 18 Oct 2026. The live URL comes from the repo's README and `CNAME`; it could not be requested from the build environment, so the screenshot was taken from the same code built locally. README only; no separate docs. Not on iamsteve.in. |
 
 ### Audio & Music Tools
 
