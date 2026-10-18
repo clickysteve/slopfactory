@@ -171,6 +171,37 @@ export const projects: Project[] = [
     },
     order: 5,
   },
+  {
+    id: 'squared',
+    name: 'SQUARED',
+    category: 'generative',
+    status: 'live',
+    platform: 'Browser · Web MIDI',
+    summary:
+      'Explore harmony by moving across a grid where every cell is a four-note chord: across changes one pair of notes, up changes the other.',
+    description: [
+      'SQUARED is a MIDI instrument for exploring melody and harmony through two-dimensional movement. Every cell of its grid (16 × 16 by default) is a four-note chord: moving across changes one pair of notes, moving up changes the other, with the harmony intervals for each axis counted in scale degrees. When you move, common tones keep sounding.',
+      'Play it with the mouse, drive it from a hardware sequencer with two CC lanes and a trigger note, or let its own coordinate sequencer walk the grid in time with internal or external MIDI clock. It makes no sound itself: it plays your synthesizers, on one channel or four. It is an unofficial spiritual successor to David Snow’s MIDI Square, a clean-room implementation with its own interface, and is not affiliated with the original developer.',
+    ],
+    features: [
+      'Root, scale, octave and harmony interval for each axis',
+      'Gated or latched play, POLY or MULTI channel routing',
+      'External X/Y control by CC, coordinate sequencer, clock in and out',
+      'MIDI Learn, grid sizes from 4 to 32, project files and autosave',
+    ],
+    inspiration: 'MIDI Square, by David Snow (Atari ST).',
+    tags: ['MIDI', 'generative', 'harmony'],
+    links: {
+      launch: 'https://squared.allmyfriendsaresynths.com/',
+      source: 'https://github.com/clickysteve/squared',
+    },
+    screenshot: {
+      file: 'squared',
+      alt: 'SQUARED with the cursor mid-grid: scale and harmony settings on the left, the chord grid with its crosshair, the four sounding notes and MIDI panels on the right, and the coordinate sequencer below.',
+      source: 'Captured from a local build of the SQUARED repository (main at 482b51e).',
+    },
+    order: 6,
+  },
 
   // ── Audio & Music Tools ─────────────────────────────────────────────────────────────────
   {

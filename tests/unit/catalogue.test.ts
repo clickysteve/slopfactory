@@ -66,7 +66,7 @@ describe('the catalogue data', () => {
 
   it('includes the whole generative family with live links', () => {
     const family = projectsInCategory(projects, 'generative').map((p) => p.id);
-    expect(family).toEqual(['emmm', 'feelers', 'frakmc', 'anvil', 'downbeat']);
+    expect(family).toEqual(['emmm', 'feelers', 'frakmc', 'anvil', 'downbeat', 'squared']);
     for (const p of projectsInCategory(projects, 'generative')) expect(p.links.launch).toMatch(/allmyfriendsaresynths\.com\/$/);
   });
 
