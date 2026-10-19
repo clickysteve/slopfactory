@@ -8,11 +8,11 @@ import type { Project } from './types.ts';
  * and open questions are recorded in docs/PROJECT-INVENTORY.md.
  */
 export const projects: Project[] = [
-  // ── Generative Music ────────────────────────────────────────────────────────────────────
+  // ── Reimagined Instruments ──────────────────────────────────────────────────────────────────
   {
     id: 'emmm',
     name: 'emmm',
-    category: 'generative',
+    category: 'reimagined',
     status: 'live',
     platform: 'Browser · Web MIDI',
     summary:
@@ -46,7 +46,7 @@ export const projects: Project[] = [
   {
     id: 'feelers',
     name: 'Feelers',
-    category: 'generative',
+    category: 'reimagined',
     status: 'live',
     platform: 'Browser · Web MIDI',
     summary:
@@ -78,7 +78,7 @@ export const projects: Project[] = [
   {
     id: 'frakmc',
     name: 'FrakMC',
-    category: 'generative',
+    category: 'reimagined',
     status: 'live',
     platform: 'Browser · Web MIDI',
     summary: 'Turns the Mandelbrot and Julia sets into music for up to six MIDI instruments.',
@@ -109,7 +109,7 @@ export const projects: Project[] = [
   {
     id: 'anvil',
     name: 'ANVIL',
-    category: 'generative',
+    category: 'reimagined',
     status: 'live',
     platform: 'Browser · Web MIDI',
     summary:
@@ -141,19 +141,20 @@ export const projects: Project[] = [
   {
     id: 'downbeat',
     name: 'DOWNBEAT',
-    category: 'generative',
+    category: 'reimagined',
     status: 'live',
     platform: 'Browser · Web MIDI',
     summary:
-      'An intelligent rhythm machine: write a pattern, press play, and let it thin, fill, shift, evolve, breed and morph what you wrote.',
+      'A modern reimagining of Upbeat: an intelligent drum machine that thins, fills, shifts, evolves, breeds and morphs the patterns you write, with samples and WAV export.',
     description: [
       'DOWNBEAT is a browser instrument for drums and percussion. You establish a rhythm; DOWNBEAT explores what it could become. Keep intervening while it plays: thin it out, fill the gaps, shift it, let it evolve, breed it with another pattern, morph between two, or leave the autopilot running. What you wrote is never changed, and the grid always shows which hits are yours, which were generated and which were suppressed.',
-      'It plays immediately through its own synthesised drum sounds and is a full MIDI instrument besides. CLASSIC mode is a clean-room reading of the documented features of Intelligent Music’s UpBeat; EXTENDED adds probability, groove, Euclidean patterns, breeding, morphing and rules.',
+      'It plays immediately through its own synthesised drum sounds, can swap in your own samples, exports audio and stems as WAV, and is a full MIDI instrument besides. CLASSIC mode is a clean-room reading of the documented features of Intelligent Music’s UpBeat; EXTENDED adds probability, groove, Euclidean patterns, breeding, morphing and rules.',
     ],
     features: [
       'Velocity strikers, flams, density, fills and per-track loop points',
       'Evolution, mutation, breeding, morphing and an autopilot',
       'Per-voice MIDI channels and notes, clock in and out',
+      'Load your own samples; export WAV, per-voice stems or a ZIP',
       'Standard MIDI File export and import, six original demos',
     ],
     inspiration: 'UpBeat, “the intelligent rhythm programmer” (Intelligent Music, 1987; created by John Offenhartz).',
@@ -174,7 +175,7 @@ export const projects: Project[] = [
   {
     id: 'squared',
     name: 'SQUARED',
-    category: 'generative',
+    category: 'reimagined',
     status: 'live',
     platform: 'Browser · Web MIDI',
     summary:
@@ -202,21 +203,25 @@ export const projects: Project[] = [
     },
     order: 6,
   },
+
+  // ── Audio & Music Tools ─────────────────────────────────────────────────────────────────────
   {
     id: 'breakery',
     name: 'The Breakery',
-    category: 'generative',
+    category: 'audio',
     status: 'live',
     platform: 'Browser',
     summary:
-      'Bakes original drum breaks from your own one-shots: funk, hip-hop and jungle grooves with ghost notes, swing and evolving variations, exported as WAV.',
+      'A generative breakbeat instrument built around your own drum samples. Bake, chop, mutate and roll everything from funk to jungle, edit every hit, then export it as WAV.',
     description: [
-      'The Breakery is a generative breakbeat instrument. You bring the ingredients (drum one-shots); it invents the recipe: an original drum performance, with a backbeat that anchors, kicks that syncopate, ghost notes that answer the snare, hats that keep time with a drummer’s accents, a feel, and a turnaround that pushes back into the top of the loop. It is not a step sequencer: you guide it with a style (FUNK, HIP-HOP, JUNGLE or BROKEN), a tempo and eight controls, and it composes.',
-      'Bake one break or a batch of eight, freeze the layers you like while baking again, and take the result away as a WAV to sample, slice and rearrange in your sampler or DAW. Your samples stay in the browser and are never uploaded; on a first visit a synthesised demo kit lets you try everything at once.',
+      'The Breakery is a generative breakbeat instrument. You bring the ingredients (drum one-shots); it invents the recipe: an original drum performance, with a backbeat that anchors, kicks that syncopate, ghost notes that answer the snare, hats that keep time with a drummer’s accents, a feel, and a turnaround that pushes back into the top of the loop. It is not a step sequencer: you guide it with a recipe (FUNK, HIP-HOP, JUNGLE, D&B, BREAKCORE and more), a tempo and a handful of controls, and it composes. Then you can take over: every hit can be added, moved, deleted or changed by hand.',
+      'Bake one break or a batch of eight, freeze the layers you like while baking again, chop and mutate it into related sections, and take the result away as a WAV to sample, slice and rearrange in your sampler or DAW. Your samples stay in the browser and are never uploaded; on a first visit a synthesised demo kit lets you try everything at once.',
     ],
     features: [
-      'Density, complexity, syncopation, ghosts, swing, humanise, variation and fills',
-      'BATCH of eight candidates; FREEZE the beat, detail, feel or kit',
+      'Eleven recipes, from FUNK and HIP-HOP to JUNGLE, D&B and BREAKCORE',
+      'Density, syncopation, ghosts, swing, humanise, fills, toms and rolls',
+      'CHOP and MUTATE tabs, BATCH of eight candidates, and FREEZE for the layers you like',
+      'Hand-edit any hit, with a mixer and an output chain',
       'WAV export as bars plus tail or a seamless loop, with optional stems and MIDI file',
       'Drop in WAV or AIFF one-shots, sorted into categories by file name',
     ],
@@ -230,10 +235,8 @@ export const projects: Project[] = [
       alt: 'The Breakery with its demo kit: ingredients on the left, the FUNK recipe and bake controls above, a two-bar break in the pattern view, and a batch of eight candidates below.',
       source: 'Captured from a local build of The Breakery repository (main at dc97fba).',
     },
-    order: 7,
+    order: 1,
   },
-
-  // ── Audio & Music Tools ─────────────────────────────────────────────────────────────────
   {
     id: 'good-bits',
     name: 'The Good Bits',
@@ -241,10 +244,10 @@ export const projects: Project[] = [
     status: 'live',
     platform: 'Browser',
     summary:
-      'Point it at long recordings and it finds the phrases, chops and one-shots worth keeping, then time-stretches, conforms or remixes them.',
+      'Point it at long recordings and it finds the phrases, chops and one-shots worth keeping, then stretches, conforms, flips or mangles them into something new.',
     description: [
       'The Good Bits is a fast first pass for sampling. Point it at folders of long source recordings (solo horns, Rhodes, drum breaks) and it finds candidate phrases for you to audition and load into hardware samplers later. It does not try to replace your own chopping decisions.',
-      'It is organised around what you are trying to do: Chop, Stretch, Both, Play Nice (conform unrelated loops to one tempo and key), Flip (automatic remixes of one loop), Stretch FX (melt a break into time-stretched malfunction effects) and Lab (grow small, unfamiliar DSP algorithms and keep the good ones). Everything runs in your browser; nothing is uploaded.',
+      'It is organised around what you are trying to do: Chop, Stretch (with Stretch FX, which melts a break into time-stretched malfunction effects), Play Nice (conform unrelated loops to one tempo and key), Flip (automatic remixes of one loop) and Lab (grow small, unfamiliar DSP algorithms and keep the good ones). Everything runs in your browser; nothing is uploaded.',
     ],
     features: [
       'Key, tempo and onset detection, with a live waveform editor',
@@ -264,7 +267,7 @@ export const projects: Project[] = [
       source: 'Captured from the live app after processing a synthesised drum loop (Chop task, Drums, 1 bar).',
     },
     featured: true,
-    order: 1,
+    order: 2,
   },
   {
     id: 'loop-saboteur',
@@ -296,7 +299,7 @@ export const projects: Project[] = [
       position: 'top',
       source: 'docs/loop-saboteur-UI.png in the Loop Saboteur repository.',
     },
-    order: 2,
+    order: 3,
   },
   {
     id: 'grid-theory',
@@ -313,7 +316,7 @@ export const projects: Project[] = [
     tags: ['plugin', 'sequencer', 'MIDI'],
     links: {},
     availabilityNote: 'Not yet public',
-    order: 3,
+    order: 4,
   },
   {
     id: 'm8-librarian',
@@ -343,7 +346,7 @@ export const projects: Project[] = [
       alt: 'M8 Librarian showing the built-in demo card: a song’s instruments, sample dependencies and song grid in a dark window.',
       source: 'Captured from the live app using its synthetic demo card.',
     },
-    order: 4,
+    order: 5,
   },
   {
     id: 'pico-tracker-librarian',
@@ -374,7 +377,7 @@ export const projects: Project[] = [
       position: 'left top',
       source: 'screenshots/pattern-editor.png in the picoTracker Librarian repository.',
     },
-    order: 5,
+    order: 6,
   },
   {
     id: 'mega-tools',
@@ -404,7 +407,7 @@ export const projects: Project[] = [
       alt: 'The Mega-Tools landing page: a blue terminal-style index of renderer, ROM patcher, save and converter tools.',
       source: 'Captured from the live site.',
     },
-    order: 6,
+    order: 7,
   },
   {
     id: 'opennura',
@@ -425,7 +428,7 @@ export const projects: Project[] = [
       source: 'https://github.com/clickysteve/open-nura-mac',
       docs: 'https://iamsteve.in/2026/07/30/opennura-for-macos/',
     },
-    order: 7,
+    order: 8,
   },
   {
     id: 'amfas-music-library',
@@ -456,10 +459,10 @@ export const projects: Project[] = [
       position: 'top',
       source: 'Captured from the live site, scrolled to the track list.',
     },
-    order: 8,
+    order: 9,
   },
 
-  // ── Video & Visual Tools ────────────────────────────────────────────────────────────────
+  // ── Video & Visual Tools ────────────────────────────────────────────────────────────────────
   {
     id: 'bendr',
     name: 'BENDR',
@@ -524,7 +527,7 @@ export const projects: Project[] = [
     order: 2,
   },
 
-  // ── Photography & Imaging ───────────────────────────────────────────────────────────────
+  // ── Photography & Imaging ───────────────────────────────────────────────────────────────────
   {
     id: 'dmg-darkroom',
     name: 'DMG Darkroom',
@@ -559,11 +562,11 @@ export const projects: Project[] = [
     order: 1,
   },
 
-  // ── Other Creative Tools ────────────────────────────────────────────────────────────────
+  // ── Miscellany ──────────────────────────────────────────────────────────────────────────────
   {
     id: 'cartridge-index',
     name: 'Cartridge Index',
-    category: 'other',
+    category: 'misc',
     status: 'live',
     platform: 'Browser · installable',
     summary:
@@ -588,7 +591,7 @@ export const projects: Project[] = [
   {
     id: 'oh-mother',
     name: 'Oh Mother',
-    category: 'other',
+    category: 'misc',
     status: 'experimental',
     platform: 'macOS / Windows app',
     summary:

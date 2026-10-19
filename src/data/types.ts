@@ -3,7 +3,7 @@
  * one Project entry in projects.ts; nothing about a project is written anywhere else.
  */
 
-export type CategoryId = 'generative' | 'audio' | 'video' | 'photo' | 'other';
+export type CategoryId = 'reimagined' | 'audio' | 'video' | 'photo' | 'misc';
 
 /**
  * How finished a project is. `live` means released and usable (it may still be a plugin or a
@@ -13,10 +13,12 @@ export type Status = 'live' | 'beta' | 'experimental' | 'in-development' | 'arch
 
 export interface Category {
   id: CategoryId;
-  /** Section heading, e.g. "Generative Music". */
+  /** Section heading, e.g. "Reimagined Instruments". */
   name: string;
-  /** Short label for the navigation bar, e.g. "Generative". */
+  /** Short label for the navigation bar, e.g. "Reimagined". */
   navLabel: string;
+  /** Earlier anchor ids for this section, so old links such as #generative still land here. */
+  aliases?: string[];
   /** One or two sentences under the section heading. */
   blurb: string;
   /** Position on the page, lowest first. */

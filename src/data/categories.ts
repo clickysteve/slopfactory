@@ -3,18 +3,19 @@ import type { Category } from './types.ts';
 /** The catalogue's departments. Colours live in src/styles/tokens.css as --cat-<id>. */
 export const categories: Category[] = [
   {
-    id: 'generative',
-    name: 'Generative Music',
-    navLabel: 'Generative',
+    id: 'reimagined',
+    name: 'Reimagined Instruments',
+    navLabel: 'Reimagined',
+    aliases: ['generative'],
     blurb:
-      'Browser instruments that compose with you. Each is a new take on a half-forgotten piece of late-80s music software, and all of them play your MIDI hardware.',
+      'Forgotten ideas from the early days of computer music, rebuilt and expanded for modern machines. Not simply recreations, but explorations of what those instruments could have become.',
     order: 1,
   },
   {
     id: 'audio',
     name: 'Audio & Music Tools',
     navLabel: 'Audio',
-    blurb: 'Sample choppers, plugins, librarians for small trackers, and other things for people who own too many synths.',
+    blurb: 'Original instruments, sample manglers, plugins, librarians and other things for people who own too many synths.',
     order: 2,
   },
   {
@@ -32,10 +33,11 @@ export const categories: Category[] = [
     order: 4,
   },
   {
-    id: 'other',
-    name: 'Other Creative Tools',
-    navLabel: 'Other',
-    blurb: 'Useful things that did not fit in any of the other drawers.',
+    id: 'misc',
+    name: 'Miscellany',
+    navLabel: 'Miscellany',
+    aliases: ['other'],
+    blurb: "Useful oddities, peculiar experiments and things that don't fit neatly into the other drawers.",
     order: 5,
   },
 ];

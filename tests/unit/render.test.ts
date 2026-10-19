@@ -20,7 +20,7 @@ function attrs(tag: string, source = html): Array<Record<string, string>> {
 const minimal: Project = {
   id: 'bare',
   name: 'Bare <Tool>',
-  category: 'other',
+  category: 'misc',
   status: 'in-development',
   platform: 'Desktop',
   summary: 'A & B',

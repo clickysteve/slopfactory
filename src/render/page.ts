@@ -120,6 +120,7 @@ function renderCategory(c: Category, projects: readonly Project[]): string {
   const items = projectsInCategory(projects, c.id);
   return join([
     `<section class="dept window" id="${esc(c.id)}" aria-labelledby="${esc(c.id)}-title" style="--cat: var(--cat-${esc(c.id)}); --span: ${items.length}">`,
+    ...(c.aliases ?? []).map((a) => `<span class="anchor-alias" id="${esc(a)}"></span>`),
     `<div class="titlebar"><h2 class="titlebar-title" id="${esc(c.id)}-title">${esc(c.name)}</h2><span class="titlebar-fill" aria-hidden="true"></span><span class="titlebar-meta">${items.length} ${items.length === 1 ? 'title' : 'titles'}</span></div>`,
     `<p class="dept-blurb">${esc(c.blurb)}</p>`,
     `<ul class="grid" role="list">`,

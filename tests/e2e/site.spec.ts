@@ -81,8 +81,8 @@ test('the menu follows scrolling, and highlights Elsewhere at the bottom of the 
   await page.emulateMedia({ reducedMotion: 'reduce' });
   const nav = page.locator('.menubar-nav');
   await expect(nav.locator('a[aria-current="true"]')).toHaveCount(0);
-  await page.locator('#generative .grid').evaluate((el) => el.scrollIntoView({ block: 'center' }));
-  await expect(nav.locator('a[aria-current="true"]')).toHaveText(['Generative']);
+  await page.locator('#reimagined .grid').evaluate((el) => el.scrollIntoView({ block: 'center' }));
+  await expect(nav.locator('a[aria-current="true"]')).toHaveText(['Reimagined']);
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
   await expect(nav.locator('a[aria-current="true"]')).toHaveText(['Elsewhere']);
 });
@@ -166,4 +166,15 @@ test('captures the page for visual review', async ({ page }, info) => {
   await page.locator('#tool-emmm .btn--info').click();
   await loadAllImages(page);
   await page.screenshot({ path: `test-results/screenshots/${info.project.name}-info.png` });
+});
+
+test('old section links still reach the renamed departments', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  for (const [old, current] of [
+    ['generative', 'reimagined'],
+    ['other', 'misc'],
+  ] as const) {
+    await page.goto(`/#${old}`);
+    await expect(page.locator(`#${current}`)).toBeInViewport();
+  }
 });

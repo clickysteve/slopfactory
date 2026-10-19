@@ -3,7 +3,7 @@
 **Independent software for questionable creative purposes.**
 
 Slop Factory is the catalogue of creative software, experimental musical instruments and
-digital oddities made by Stephen McLeod Blythe (allmyfriendsaresynths): generative music
+digital oddities made by Stephen McLeod Blythe (allmyfriendsaresynths): reimagined
 instruments, sample tools, tracker librarians, a circuit-bent video processor, a Game Boy
 Camera darkroom and more. It is designed like a software catalogue from an alternate 1991,
 and most of what it lists runs in a browser: press LAUNCH and start experimenting.
@@ -86,7 +86,7 @@ Individually:
    {
      id: 'my-tool',                       // lowercase-with-hyphens, unique
      name: 'My Tool',
-     category: 'audio',                   // generative | audio | video | photo | other
+     category: 'audio',                   // reimagined | audio | video | photo | misc
      status: 'experimental',              // live | beta | experimental | in-development | archived
      platform: 'Browser · Web MIDI',
      summary: 'One sentence for the card (under 180 characters).',
