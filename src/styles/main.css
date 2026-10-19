@@ -941,3 +941,9 @@ main:focus {
     padding: 12px;
   }
 }
+
+/* Old section ids (#generative, #other) kept as zero-size anchors so existing links still land. */
+.anchor-alias {
+  display: block;
+  height: 0;
+}

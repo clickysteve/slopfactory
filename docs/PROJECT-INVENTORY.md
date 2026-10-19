@@ -3,7 +3,7 @@
 Everything considered for the Slop Factory catalogue, what was verified, and what still needs
 a human decision. Compiled on **11 October 2026** from three sources treated as complementary:
 
-1. The projects page at <https://iamsteve.in/projects/> (out of date: it predates the generative family).
+1. The projects page at <https://iamsteve.in/projects/> (out of date: it predates the Reimagined Instruments).
 2. The public repositories of [github.com/clickysteve](https://github.com/clickysteve), including each README and docs folder.
 3. The list of recent applications supplied with the brief (emmm, Feelers, FrakMC, ANVIL, DOWNBEAT, The Good Bits).
 
@@ -21,7 +21,7 @@ The catalogue data itself lives in [`src/data/projects.ts`](../src/data/projects
 | 1 | **Grid Theory** | The repository `clickysteve/grid-theory` is **private**, so the GitHub link on iamsteve.in/projects returns 404 to visitors. It is listed as *In development* with no links and the note "Not yet public". Make the repo public (or give a release URL) and add `links.source`. No screenshot is available. |
 | 2 | **Cartridge Index screenshot** | The live app opens behind a Google sign-in, so no representative screenshot could be captured without signing in to your account. It uses a typographic placeholder. A screenshot of your own library would be the obvious fix. |
 | 3 | **OpenNura screenshot** | No screenshot of the app exists in the repo or the blog post (the post's only image is a 2018 photo of the headphones). Placeholder used. |
-| 4 | **Statuses** | The whole generative family is *Live* (decided 12 Oct 2026, although the GitHub descriptions of Feelers, FrakMC, ANVIL and DOWNBEAT still say "Experimental"). M8 Librarian and picoTracker Librarian are *Beta* (both say so in the app and README). OpenNura and Oh Mother are *Experimental* because their READMEs say so. |
+| 4 | **Statuses** | The whole Reimagined Instruments family is *Live* (decided 12 Oct 2026, although the GitHub descriptions of Feelers, FrakMC, ANVIL and DOWNBEAT still say "Experimental"). M8 Librarian and picoTracker Librarian are *Beta* (both say so in the app and README). OpenNura and Oh Mother are *Experimental* because their READMEs say so. |
 | 5 | **Loop Saboteur** | v1.0.0 with a manual, but no binary release on GitHub, so it has *Manual* and *Source* buttons and no Download. Add `links.download` if builds are published. |
 | 6 | **allmyfriendsaresynths / Bandcamp** | `allmyfriendsaresynths.com` does not resolve, and `allmyfriendsaresynths.bandcamp.com` does not exist. "allmyfriendsaresynths" therefore links to the YouTube channel (as on iamsteve.in), and "Bandcamp" is the Cow Tongue Taco Records page. These are one entry each rather than duplicates. |
 | 11 | **Oh Mother screenshot** | The repo's Character-tab screenshot shows a local file path (`/Users/steve/Downloads/…`) in the title bar. It is already public in the README; swap it for another tab's screenshot if you would rather not show it. |
@@ -29,11 +29,11 @@ The catalogue data itself lives in [`src/data/projects.ts`](../src/data/projects
 | 8 | **The Good Bits URL** | The README says the live app is at `clickysteve.github.io/the-good-bits/`; the Pages configuration serves it at `thegoodbits.allmyfriendsaresynths.com`, which is what the site uses. The README could be updated. |
 | 9 | **Mega-Tools URL** | Same as above: README says `clickysteve.github.io/mega-tools/`, Pages serves `mega-tools.allmyfriendsaresynths.com`. |
 | 10 | **Production domain** | `slopfactory.allmyfriendsaresynths.com` does not resolve yet. DNS has not been touched (see README › Deployment). |
-| 12 | **Generative Music blurb** | The department blurb says each instrument is "a new take on a half-forgotten piece of late-80s music software" and that "all of them play your MIDI hardware". The Breakery is neither: it plays samples and exports WAV (MIDI is file export only). Reword the blurb in `src/data/categories.ts` if that matters. |
+| 12 | **Reimagined Instruments** | Resolved 19 Oct 2026: the department replaced Generative Music, its blurb no longer claims every title is a late-80s revival that plays MIDI, and The Breakery moved to Audio & Music Tools. Old `#generative` and `#other` links still work through `aliases` in `src/data/categories.ts`. |
 
 ## Included in the catalogue
 
-### Generative Music
+### Reimagined Instruments
 
 | Project | Live | Source | Status | Screenshot | Notes |
 |---|---|---|---|---|---|
@@ -43,12 +43,12 @@ The catalogue data itself lives in [`src/data/projects.ts`](../src/data/projects
 | **ANVIL** | <https://anvil.allmyfriendsaresynths.com/> | [anvil](https://github.com/clickysteve/anvil) | Live | Captured from the live app (Colour palette, themes generated) | Dr. T's *Tunesmith* (Jim Johnson, 1988–91). Not on iamsteve.in. |
 | **DOWNBEAT** | <https://downbeat.allmyfriendsaresynths.com/> | [downbeat](https://github.com/clickysteve/downbeat) | Live | `docs/images/downbeat.png` from the repo | Intelligent Music's *UpBeat* (1987). Docs: [Quick Start](https://github.com/clickysteve/downbeat/blob/main/docs/QUICK_START.md). Not on iamsteve.in. |
 | **SQUARED** | <https://squared.allmyfriendsaresynths.com/> | [squared](https://github.com/clickysteve/squared) | Live | Captured from a local build of the repo (main at `482b51e`), cursor moved to X 06 · Y 07 | David Snow's *MIDI Square* (Atari ST); unofficial, clean-room. Added on 18 Oct 2026. The live URL comes from the repo's README and `CNAME`; it could not be requested from the build environment, so the screenshot was taken from the same code built locally. README only; no separate docs. Not on iamsteve.in. |
-| **The Breakery** | <https://breakery.allmyfriendsaresynths.com/> | [the-breakery](https://github.com/clickysteve/the-breakery) | Live | Captured from a local build of the repo (main at `dc97fba`), demo kit, seed 4242, after BATCH | Generative breakbeat instrument for your own one-shots; no single piece of old software behind it, so no inspiration line. Added on 18 Oct 2026. The live URL comes from the repo's README and `CNAME`; it could not be requested from the build environment, so the screenshot was taken from the same code built locally. Its README notes it has not yet been evaluated by ear. See review item 12. Not on iamsteve.in. |
 
 ### Audio & Music Tools
 
 | Project | Live / download | Source | Status | Screenshot | Notes |
 |---|---|---|---|---|---|
+| **The Breakery** | <https://breakery.allmyfriendsaresynths.com/> | [the-breakery](https://github.com/clickysteve/the-breakery) | Live | Captured from a local build of the repo (main at `dc97fba`), demo kit, seed 4242, after BATCH | Generative breakbeat instrument for your own one-shots; an original instrument (not a reimagining), so no inspiration line. Filed under Audio & Music Tools, first in the department, on 19 Oct 2026. Added on 18 Oct 2026. The live URL comes from the repo's README and `CNAME`; it could not be requested from the build environment, so the screenshot was taken from the same code built locally. Its README notes it has not yet been evaluated by ear. The screenshot predates the CHOP, ROLLS, MUTATE, MIXER and OUTPUT tabs and could do with a refresh. Not on iamsteve.in. |
 | **The Good Bits** | <https://thegoodbits.allmyfriendsaresynths.com/> | [the-good-bits](https://github.com/clickysteve/the-good-bits) | Live | Captured from the live app after processing a synthesised drum loop | Chop, Stretch, Both, Play Nice, Flip, Stretch FX, Lab. The audio was generated for the screenshot; no third-party recordings. |
 | **Loop Saboteur** | Manual: <https://clickysteve.github.io/Loop-Saboteur/> | [Loop-Saboteur](https://github.com/clickysteve/Loop-Saboteur) | Live (v1.0.0, build from source) | `docs/loop-saboteur-UI.png` from the repo | JUCE 8 AU/VST3 plugin, GPL-3.0. |
 | **Grid Theory** | none | private | In development | none | See review item 1. |
@@ -71,7 +71,7 @@ The catalogue data itself lives in [`src/data/projects.ts`](../src/data/projects
 |---|---|---|---|---|---|
 | **DMG Darkroom** | <https://dmgdarkroom.allmyfriendsarejpegs.com/> | [dmg-darkroom](https://github.com/clickysteve/dmg-darkroom) | Live | Captured from the live app with a synthetic save | The save was built in the page with the app's own `GBCam.writePhotoToSlot` (the same technique as its e2e tests) and contains generated patterns, not real photos. Docs: [blog post](https://iamsteve.in/2026/05/07/dmg-darkroom-gb-camera-companion-app/). Written "DMG DarkRoom" in the app. |
 
-### Other Creative Tools
+### Miscellany
 
 | Project | Live | Source | Status | Screenshot | Notes |
 |---|---|---|---|---|---|

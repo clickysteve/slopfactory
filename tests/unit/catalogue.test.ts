@@ -9,6 +9,7 @@ import {
   projectsInCategory,
   screenshotLink,
   screenshotPaths,
+  sortedCategories,
   validateCatalogue,
 } from '../../src/catalogue.ts';
 import { categories } from '../../src/data/categories.ts';
@@ -60,18 +61,53 @@ describe('the catalogue data', () => {
     expect(projects.find((p) => p.id === 'lc-1x-plus')?.category).toBe('video');
   });
 
-  it('keeps Cartridge Index with the other creative tools', () => {
-    expect(projects.find((p) => p.id === 'cartridge-index')?.category).toBe('other');
+  it('has the five departments, in order', () => {
+    expect(sortedCategories(categories).map((c) => c.name)).toEqual([
+      'Reimagined Instruments',
+      'Audio & Music Tools',
+      'Video & Visual Tools',
+      'Photography & Imaging',
+      'Miscellany',
+    ]);
+    expect(sortedCategories(categories).map((c) => c.navLabel)).toEqual(['Reimagined', 'Audio', 'Video', 'Photo', 'Miscellany']);
   });
 
-  it('includes the whole generative family with live links', () => {
-    const family = projectsInCategory(projects, 'generative').map((p) => p.id);
-    expect(family).toEqual(['emmm', 'feelers', 'frakmc', 'anvil', 'downbeat', 'squared', 'breakery']);
-    for (const p of projectsInCategory(projects, 'generative')) expect(p.links.launch).toMatch(/allmyfriendsaresynths\.com\/$/);
+  it('files every title in the right department, in order', () => {
+    const names = (id: Parameters<typeof projectsInCategory>[1]) => projectsInCategory(projects, id).map((p) => p.name);
+    expect(names('reimagined')).toEqual(['emmm', 'Feelers', 'FrakMC', 'ANVIL', 'DOWNBEAT', 'SQUARED']);
+    expect(names('audio')).toEqual([
+      'The Breakery',
+      'The Good Bits',
+      'Loop Saboteur',
+      'Grid Theory',
+      'M8 Librarian',
+      'picoTracker Librarian',
+      'Mega-Tools',
+      'OpenNura for Mac',
+      'AMFAS Music Library',
+    ]);
+    expect(names('video')).toEqual(['BENDR', 'LC-1X+ MIDI2DMX']);
+    expect(names('photo')).toEqual(['DMG Darkroom']);
+    expect(names('misc')).toEqual(['Cartridge Index', 'Oh Mother']);
   });
 
-  it('marks the generative family as released, not experimental', () => {
-    for (const p of projectsInCategory(projects, 'generative')) expect(p.status, p.id).toBe('live');
+  it('counts 20 titles in 5 departments, with featured projects counted once', () => {
+    expect(catalogueStats(projects, categories)).toMatchObject({ titles: 20, departments: 5 });
+    expect(new Set(projects.map((p) => p.name)).size).toBe(20);
+    expect(featuredProjects(projects, categories).map((p) => p.name)).toEqual(['emmm', 'The Good Bits', 'BENDR', 'DMG Darkroom']);
+  });
+
+  it('keeps old section ids as aliases', () => {
+    expect(categories.find((c) => c.id === 'reimagined')?.aliases).toContain('generative');
+    expect(categories.find((c) => c.id === 'misc')?.aliases).toContain('other');
+  });
+
+  it('links every Reimagined Instrument to its live app', () => {
+    for (const p of projectsInCategory(projects, 'reimagined')) expect(p.links.launch).toMatch(/allmyfriendsaresynths\.com\/$/);
+  });
+
+  it('marks the Reimagined Instruments as released, not experimental', () => {
+    for (const p of projectsInCategory(projects, 'reimagined')) expect(p.status, p.id).toBe('live');
   });
 
   it('lists the AMFAS Music Library as an audio tool, and Music Collection DB as another place', () => {
@@ -81,8 +117,8 @@ describe('the catalogue data', () => {
     expect(places.find((pl) => pl.id === 'music-collection')?.url).toBe('https://music.clickysteve.com/');
   });
 
-  it('includes the EarthBound save editor in Other Creative Tools', () => {
-    expect(projects.find((p) => p.id === 'oh-mother')?.category).toBe('other');
+  it('includes the EarthBound save editor in Miscellany', () => {
+    expect(projects.find((p) => p.id === 'oh-mother')?.category).toBe('misc');
   });
 
   it('includes The Good Bits', () => {

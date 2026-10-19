@@ -31,11 +31,11 @@ All colours, type and spacing are CSS custom properties in
 | `--paper` | `#fbf8ef` | Windows, cards, text on coloured bars |
 | `--ink` | `#1d1c18` | Text, frames, shadows, inverted states |
 | `--dim` | `#5f5a4f` | Secondary text (6.5:1 on paper) |
-| `--cat-generative` | `#8a2f5e` | Generative Music: burgundy |
+| `--cat-reimagined` | `#8a2f5e` | Reimagined Instruments: burgundy |
 | `--cat-audio` | `#1d6a86` | Audio & Music: blue |
 | `--cat-video` | `#2c7149` | Video & Visual: green |
 | `--cat-photo` | `#8f5d00` | Photography: dark amber |
-| `--cat-other` | `#6a3fa0` | Other Creative Tools: violet |
+| `--cat-misc` | `#6a3fa0` | Miscellany: violet |
 | `--cat-places` | `#3b3a36` | Other Places: dark grey |
 | `--activity` | `#c0392b` | Experimental badge |
 | `--beta` | `#8f5d00` | Beta badge |
