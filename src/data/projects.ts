@@ -47,7 +47,7 @@ export const projects: Project[] = [
     id: 'feelers',
     name: 'Feelers',
     category: 'reimagined',
-    status: 'live',
+    status: 'experimental',
     platform: 'Browser · Web MIDI',
     summary:
       'Four lines reach into a bank of Time, Pitch, Velocity and Legato series, and you steer the combinations as they evolve.',
@@ -79,7 +79,7 @@ export const projects: Project[] = [
     id: 'frakmc',
     name: 'FrakMC',
     category: 'reimagined',
-    status: 'live',
+    status: 'experimental',
     platform: 'Browser · Web MIDI',
     summary: 'Turns the Mandelbrot and Julia sets into music for up to six MIDI instruments.',
     description: [
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     id: 'anvil',
     name: 'ANVIL',
     category: 'reimagined',
-    status: 'live',
+    status: 'experimental',
     platform: 'Browser · Web MIDI',
     summary:
       'Set the rules; ANVIL composes short themes, makes variations of them and plays them through up to six voices of accompaniment.',
@@ -176,7 +176,7 @@ export const projects: Project[] = [
     id: 'squared',
     name: 'SQUARED',
     category: 'reimagined',
-    status: 'live',
+    status: 'experimental',
     platform: 'Browser · Web MIDI',
     summary:
       'Explore harmony by moving across a grid where every cell is a four-note chord: across changes one pair of notes, up changes the other.',
@@ -207,7 +207,7 @@ export const projects: Project[] = [
     id: 'picturescue',
     name: 'PICTURESCUE',
     category: 'reimagined',
-    status: 'live',
+    status: 'experimental',
     platform: 'Browser · Web MIDI',
     summary:
       'Pictures make music: load an image and four scanning regions read its colours and shapes into evolving MIDI performances.',
@@ -417,13 +417,13 @@ export const projects: Project[] = [
     id: 'pico-tracker-librarian',
     name: 'picoTracker Librarian',
     category: 'audio',
-    status: 'beta',
+    status: 'live',
     platform: 'Browser (Chrome / Edge)',
     summary:
       'A librarian and arrangement editor for picoTracker and picoTracker Advance SD cards, with playback, repair and MIDI export.',
     description: [
       'picoTracker Librarian browses and audits the projects, instruments, samples and themes on a picoTracker SD card (pico and Advance alike), plays songs without leaving the page, and edits the arrangement, phrases, slice points and instrument parameters.',
-      'It finds and repairs broken sample references, builds ordered setlists, and exports MIDI as a whole song or per-channel stems. It is beta software that writes to your card, so it backs everything up first; back up your own card too.',
+      'It finds and repairs broken sample references, builds ordered setlists, and exports MIDI as a whole song or per-channel stems. It writes to your card, so it backs everything up first; back up your own card too.',
     ],
     features: [
       'Song grid and phrase editing',
@@ -478,7 +478,7 @@ export const projects: Project[] = [
     id: 'opennura',
     name: 'OpenNura for Mac',
     category: 'audio',
-    status: 'experimental',
+    status: 'live',
     platform: 'macOS app',
     summary:
       'Control Nuraphone headphones from a Mac, and recover the device key without needing an iOS or Windows device.',
@@ -657,7 +657,7 @@ export const projects: Project[] = [
     id: 'oh-mother',
     name: 'Oh Mother',
     category: 'misc',
-    status: 'experimental',
+    status: 'live',
     platform: 'macOS / Windows app',
     summary:
       'A save file editor for EarthBound on the SNES: names, levels, stats, inventory, money, Escargo Express storage and all 1024 story flags.',

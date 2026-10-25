@@ -107,8 +107,11 @@ describe('the catalogue data', () => {
     for (const p of projectsInCategory(projects, 'reimagined')) expect(p.links.launch).toMatch(/allmyfriendsaresynths\.com\/$/);
   });
 
-  it('marks the Reimagined Instruments as released, not experimental', () => {
-    for (const p of projectsInCategory(projects, 'reimagined')) expect(p.status, p.id).toBe('live');
+  it('marks the Reimagined Instruments with their expected status', () => {
+    const experimental = ['feelers', 'frakmc', 'anvil', 'squared', 'picturescue'];
+    for (const p of projectsInCategory(projects, 'reimagined')) {
+      expect(p.status, p.id).toBe(experimental.includes(p.id) ? 'experimental' : 'live');
+    }
   });
 
   it('lists the AMFAS Music Library as an audio tool, and Music Collection DB as another place', () => {
