@@ -74,9 +74,10 @@ describe('the catalogue data', () => {
 
   it('files every title in the right department, in order', () => {
     const names = (id: Parameters<typeof projectsInCategory>[1]) => projectsInCategory(projects, id).map((p) => p.name);
-    expect(names('reimagined')).toEqual(['emmm', 'Feelers', 'FrakMC', 'ANVIL', 'DOWNBEAT', 'SQUARED']);
+    expect(names('reimagined')).toEqual(['emmm', 'Feelers', 'FrakMC', 'ANVIL', 'DOWNBEAT', 'SQUARED', 'PICTURESCUE']);
     expect(names('audio')).toEqual([
       'The Breakery',
+      'CLATTER',
       'The Good Bits',
       'Loop Saboteur',
       'Grid Theory',
@@ -91,9 +92,9 @@ describe('the catalogue data', () => {
     expect(names('misc')).toEqual(['Cartridge Index', 'Oh Mother']);
   });
 
-  it('counts 20 titles in 5 departments, with featured projects counted once', () => {
-    expect(catalogueStats(projects, categories)).toMatchObject({ titles: 20, departments: 5 });
-    expect(new Set(projects.map((p) => p.name)).size).toBe(20);
+  it('counts 22 titles in 5 departments, with featured projects counted once', () => {
+    expect(catalogueStats(projects, categories)).toMatchObject({ titles: 22, departments: 5 });
+    expect(new Set(projects.map((p) => p.name)).size).toBe(22);
     expect(featuredProjects(projects, categories).map((p) => p.name)).toEqual(['emmm', 'The Good Bits', 'BENDR', 'DMG Darkroom']);
   });
 
