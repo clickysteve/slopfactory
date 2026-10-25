@@ -296,9 +296,9 @@ export const projects: Project[] = [
     },
     screenshot: {
       file: 'clatter',
-      alt: 'CLATTER playing a generated MACHINE pattern: a ten-track, two-bar step grid in 1-bit black and white, with the generator controls and Evolve panel below.',
+      alt: 'CLATTER in its orange and black interface: a ten-track, two-bar step grid with a pattern of drum hits, and the TRANSFORM tab below with rolls switched on.',
       position: 'left top',
-      source: 'Captured from a local build of the CLATTER repository (main at 0c5b524), default project, after GENERATE and GENERATE KIT.',
+      source: 'Screenshot of CLATTER running the pattern view with the TRANSFORM tab open and ROLLS on.',
     },
     order: 2,
   },
