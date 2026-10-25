@@ -203,6 +203,37 @@ export const projects: Project[] = [
     },
     order: 6,
   },
+  {
+    id: 'picturescue',
+    name: 'PICTURESCUE',
+    category: 'reimagined',
+    status: 'live',
+    platform: 'Browser · Web MIDI',
+    summary:
+      'Pictures make music: load an image and four scanning regions read its colours and shapes into evolving MIDI performances.',
+    description: [
+      'PICTURESCUE is an image-driven MIDI instrument. Load a picture, place four regions on it, and a cursor in each scans its cells, turning brightness, hue, saturation, edges or the 16-colour ST palette into pitch, velocity and MIDI CC. It is an algorithmic instrument, not an AI one: every note comes from visible rules, and the same picture, settings and seed always give the same music.',
+      'It plays through five small internal sounds or your MIDI hardware, with seven scan modes, six interpretation modes, one global scale, seeds, randomise with locks, WILDCARD, factory presets and Standard MIDI File export. It is a clean-room successor to Gareth Jones’s Picture Music and uses none of the original’s code, graphics or data.',
+    ],
+    features: [
+      'Four editable regions, each with its own channel, range, sound and scan',
+      'Seven scan modes, reverse, rate, length and offset',
+      'Pitch, velocity and trigger mapped from brightness, hue, saturation, edges or ST COLOUR',
+      'Open your own pictures or use nine built-in demos; patches, presets and MIDI file export',
+    ],
+    inspiration: 'Picture Music, by Gareth Jones (Atari ST, public domain).',
+    tags: ['MIDI', 'generative', 'images'],
+    links: {
+      launch: 'https://picturescue.allmyfriendsaresynths.com/',
+      source: 'https://github.com/clickysteve/picturescue',
+    },
+    screenshot: {
+      file: 'picturescue',
+      alt: 'PICTURESCUE playing its ST low-res demo picture: four regions outlined on a pixel-art landscape, with transport, region settings and an activity roll around it.',
+      source: 'Captured from a local build of the PICTURESCUE repository (main at 998c216), demo picture playing.',
+    },
+    order: 7,
+  },
 
   // ── Audio & Music Tools ─────────────────────────────────────────────────────────────────────
   {
@@ -238,6 +269,40 @@ export const projects: Project[] = [
     order: 1,
   },
   {
+    id: 'clatter',
+    name: 'CLATTER',
+    category: 'audio',
+    status: 'live',
+    platform: 'Browser · Web MIDI',
+    summary:
+      'Generative drum synthesis and rhythmic destruction: generate a rhythm and a kit on the LXR-02 engine, then chop, roll and mangle what plays.',
+    description: [
+      'CLATTER is a drum workstation built from three systems that stay independent. RHYTHM generates seeded patterns in eleven styles, with variation, mutation, per-track density, fills, chance and polymetric lengths, and a step editor whose hand edits survive regeneration. SOUND runs the drum voices, filters, modulation and FX of the Erica Synths LXR-02’s open-source firmware, compiled to WebAssembly. DESTRUCTION chops, rolls and destroys each cycle without touching what you wrote.',
+      'Every track is a synth voice, a sample, or both together. GENERATE KIT designs a kit for the style; MUTATE and LOCK change it in controlled ways. A PERFORM view gives you quantised pads, fills, mutes, macros and snapshots. It is an independent project, not an Erica Synths product, and its source is released under the GPL.',
+    ],
+    features: [
+      'Eleven generator styles, seeded, with a step editor for velocity, probability, pitch, ratchets and flams',
+      'LXR-02 drum engine, with SYNTH, SAMPLE and HYBRID tracks and kit generation and mutation',
+      'CHOP, ROLLS, DESTROY and WILDCARD transformations, switched off to restore the written pattern',
+      'Mixer, FX bus, PERFORM view, Web MIDI notes and clock, eight factory presets',
+      'Export the master, stems, a MIDI file, every drum hit or the kit',
+    ],
+    inspiration: 'The Erica Synths LXR-02 drum synthesizer (open-source firmware), with rhythm intelligence after DOWNBEAT.',
+    tags: ['drums', 'synthesis', 'generative'],
+    links: {
+      launch: 'https://clatter.allmyfriendsaresynths.com/',
+      source: 'https://github.com/clickysteve/clatter',
+      docs: 'https://github.com/clickysteve/clatter/blob/main/docs/ARCHITECTURE.md',
+    },
+    screenshot: {
+      file: 'clatter',
+      alt: 'CLATTER playing a generated MACHINE pattern: a ten-track, two-bar step grid in 1-bit black and white, with the generator controls and Evolve panel below.',
+      position: 'left top',
+      source: 'Captured from a local build of the CLATTER repository (main at 0c5b524), default project, after GENERATE and GENERATE KIT.',
+    },
+    order: 2,
+  },
+  {
     id: 'good-bits',
     name: 'The Good Bits',
     category: 'audio',
@@ -267,7 +332,7 @@ export const projects: Project[] = [
       source: 'Captured from the live app after processing a synthesised drum loop (Chop task, Drums, 1 bar).',
     },
     featured: true,
-    order: 2,
+    order: 3,
   },
   {
     id: 'loop-saboteur',
@@ -299,7 +364,7 @@ export const projects: Project[] = [
       position: 'top',
       source: 'docs/loop-saboteur-UI.png in the Loop Saboteur repository.',
     },
-    order: 3,
+    order: 4,
   },
   {
     id: 'grid-theory',
@@ -316,7 +381,7 @@ export const projects: Project[] = [
     tags: ['plugin', 'sequencer', 'MIDI'],
     links: {},
     availabilityNote: 'Not yet public',
-    order: 4,
+    order: 5,
   },
   {
     id: 'm8-librarian',
@@ -346,7 +411,7 @@ export const projects: Project[] = [
       alt: 'M8 Librarian showing the built-in demo card: a song’s instruments, sample dependencies and song grid in a dark window.',
       source: 'Captured from the live app using its synthetic demo card.',
     },
-    order: 5,
+    order: 6,
   },
   {
     id: 'pico-tracker-librarian',
@@ -377,7 +442,7 @@ export const projects: Project[] = [
       position: 'left top',
       source: 'screenshots/pattern-editor.png in the picoTracker Librarian repository.',
     },
-    order: 6,
+    order: 7,
   },
   {
     id: 'mega-tools',
@@ -407,7 +472,7 @@ export const projects: Project[] = [
       alt: 'The Mega-Tools landing page: a blue terminal-style index of renderer, ROM patcher, save and converter tools.',
       source: 'Captured from the live site.',
     },
-    order: 7,
+    order: 8,
   },
   {
     id: 'opennura',
@@ -428,7 +493,7 @@ export const projects: Project[] = [
       source: 'https://github.com/clickysteve/open-nura-mac',
       docs: 'https://iamsteve.in/2026/07/30/opennura-for-macos/',
     },
-    order: 8,
+    order: 9,
   },
   {
     id: 'amfas-music-library',
@@ -459,7 +524,7 @@ export const projects: Project[] = [
       position: 'top',
       source: 'Captured from the live site, scrolled to the track list.',
     },
-    order: 9,
+    order: 10,
   },
 
   // ── Video & Visual Tools ────────────────────────────────────────────────────────────────────
