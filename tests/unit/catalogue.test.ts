@@ -78,6 +78,7 @@ describe('the catalogue data', () => {
     expect(names('audio')).toEqual([
       'The Breakery',
       'CLATTER',
+      'CLATTER Pocket',
       'The Good Bits',
       'Loop Saboteur',
       'Grid Theory',
@@ -92,10 +93,10 @@ describe('the catalogue data', () => {
     expect(names('misc')).toEqual(['Cartridge Index', 'Oh Mother']);
   });
 
-  it('counts 22 titles in 5 departments, with featured projects counted once', () => {
-    expect(catalogueStats(projects, categories)).toMatchObject({ titles: 22, departments: 5 });
-    expect(new Set(projects.map((p) => p.name)).size).toBe(22);
-    expect(featuredProjects(projects, categories).map((p) => p.name)).toEqual(['emmm', 'The Good Bits', 'BENDR', 'DMG Darkroom']);
+  it('counts 23 titles in 5 departments, with featured projects counted once', () => {
+    expect(catalogueStats(projects, categories)).toMatchObject({ titles: 23, departments: 5 });
+    expect(new Set(projects.map((p) => p.name)).size).toBe(23);
+    expect(featuredProjects(projects, categories).map((p) => p.name)).toEqual(['emmm', 'CLATTER Pocket', 'The Good Bits', 'BENDR', 'DMG Darkroom']);
   });
 
   it('keeps old section ids as aliases', () => {
@@ -174,6 +175,28 @@ describe('queries', () => {
     expect(screenshotLink(project({ links: { docs: 'https://e.com/d' } }))).toBeUndefined();
   });
 
+  it('uses a project’s own button labels where it gives them', () => {
+    const actions = projectActions(
+      project({ links: { launch: 'https://e.com/', source: 'https://e.com/s' }, linkLabels: { launch: 'Emulator' } }),
+    );
+    expect(actions.map((a) => [a.label, !!a.custom])).toEqual([
+      ['Emulator', true],
+      ['Source', false],
+    ]);
+    expect(screenshotLink(project({ links: { launch: 'https://e.com/' }, linkLabels: { launch: 'Emulator' } }))?.label).toBe('Emulator');
+  });
+
+  it('links CLATTER Pocket to its emulator, installer, source and website', () => {
+    const p = projects.find((x) => x.id === 'clatter-pocket')!;
+    expect(p.status).toBe('experimental');
+    expect(projectActions(p).map((a) => [a.label, a.url])).toEqual([
+      ['Emulator', 'https://clatter-pocket.allmyfriendsaresynths.com/demo/'],
+      ['Install', 'https://clatter-pocket.allmyfriendsaresynths.com/installer/'],
+      ['Source', 'https://github.com/clickysteve/clatter-pocket'],
+      ['Website', 'https://clatter-pocket.allmyfriendsaresynths.com/'],
+    ]);
+  });
+
   it('calls documentation a manual when there is nothing to launch or download', () => {
     const [docs] = projectActions(project({ links: { docs: 'https://e.com/manual' } }));
     expect(docs?.label).toBe('Manual');
@@ -218,6 +241,14 @@ describe('validation', () => {
   it('requires an availability note when there are no links', () => {
     expect(validateCatalogue(withProject(project({ links: {} })))).toContainEqual(expect.stringContaining('availabilityNote'));
     expect(validateCatalogue(withProject(project({ links: {}, availabilityNote: 'Soon' })))).toEqual([]);
+  });
+
+  it('rejects link labels for missing links, and labels too long for a button', () => {
+    const errors = (linkLabels: Project['linkLabels']) =>
+      validateCatalogue(withProject(project({ links: { launch: 'https://e.com/' }, linkLabels })));
+    expect(errors({ launch: 'Emulator' })).toEqual([]);
+    expect(errors({ download: 'Installer' })).toContainEqual(expect.stringContaining('missing download link'));
+    expect(errors({ launch: 'Try the emulator now' })).toContainEqual(expect.stringContaining('too long'));
   });
 
   it('requires a screenshot for featured projects', () => {

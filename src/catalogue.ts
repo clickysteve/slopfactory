@@ -38,16 +38,25 @@ export interface Action {
   kind: 'launch' | 'download' | 'docs' | 'source';
   label: string;
   url: string;
+  /** True when the label comes from the project's `linkLabels` rather than the standard one. */
+  custom?: boolean;
+}
+
+function action(p: Project, kind: Action['kind'], standard: string): Action | undefined {
+  const url = p.links[kind];
+  if (!url) return undefined;
+  const custom = p.linkLabels?.[kind]?.trim();
+  return custom ? { kind, label: custom, url, custom: true } : { kind, label: standard, url };
 }
 
 /** The links a project offers, most important first. Only links present in the data appear. */
 export function projectActions(p: Project): Action[] {
-  const actions: Action[] = [];
-  if (p.links.launch) actions.push({ kind: 'launch', label: 'Launch', url: p.links.launch });
-  if (p.links.download) actions.push({ kind: 'download', label: 'Download', url: p.links.download });
-  if (p.links.source) actions.push({ kind: 'source', label: 'Source', url: p.links.source });
-  if (p.links.docs) actions.push({ kind: 'docs', label: p.links.launch || p.links.download ? 'Docs' : 'Manual', url: p.links.docs });
-  return actions;
+  return [
+    action(p, 'launch', 'Launch'),
+    action(p, 'download', 'Download'),
+    action(p, 'source', 'Source'),
+    action(p, 'docs', p.links.launch || p.links.download ? 'Docs' : 'Manual'),
+  ].filter((a): a is Action => !!a);
 }
 
 /**
@@ -55,9 +64,7 @@ export function projectActions(p: Project): Action[] {
  * source repository. Undefined when it has neither.
  */
 export function screenshotLink(p: Project): Action | undefined {
-  if (p.links.launch) return { kind: 'launch', label: 'Launch', url: p.links.launch };
-  if (p.links.source) return { kind: 'source', label: 'Source', url: p.links.source };
-  return undefined;
+  return action(p, 'launch', 'Launch') ?? action(p, 'source', 'Source');
 }
 
 export interface CatalogueStats {
@@ -123,6 +130,11 @@ export function validateCatalogue(
       if (url === undefined) continue;
       const problem = checkUrl(url);
       if (problem) errors.push(`${where}: ${kind} link ${problem}`);
+    }
+    for (const [kind, label] of Object.entries(p.linkLabels ?? {})) {
+      if (!p.links[kind as keyof typeof p.links]) errors.push(`${where}: has a label for a missing ${kind} link`);
+      if (!label?.trim()) errors.push(`${where}: ${kind} link label is empty`);
+      else if (label.length > 12) errors.push(`${where}: ${kind} link label "${label}" is too long for a button (12 characters at most)`);
     }
     if (!Object.values(p.links).some(Boolean) && !p.availabilityNote) {
       errors.push(`${where}: has no links, so give it an availabilityNote`);

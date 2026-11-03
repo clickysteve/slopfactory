@@ -68,6 +68,11 @@ export interface Project {
   inspiration?: string;
   tags?: string[];
   links: ProjectLinks;
+  /**
+   * Optional button text for a link, when the standard label (Launch, Download, Source, Docs)
+   * would mislead, e.g. a browser emulator of a hardware instrument, or a web-based installer.
+   */
+  linkLabels?: Partial<Record<keyof ProjectLinks, string>>;
   screenshot?: Screenshot;
   /** Shown in the Featured strip at the top of the page. */
   featured?: boolean;

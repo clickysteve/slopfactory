@@ -93,7 +93,21 @@ test('launch buttons go straight to the live apps in a new tab', async ({ page }
     await expect(link).toHaveAttribute('href', p.links.launch!);
     await expect(link).toHaveAttribute('target', '_blank');
     await expect(link).toHaveAttribute('rel', /noopener/);
-    await expect(link).toHaveAccessibleName(new RegExp(`Launch ${p.name}`));
+    const label = p.linkLabels?.launch ? `${p.linkLabels.launch} for ${p.name}` : `Launch ${p.name}`;
+    await expect(link).toHaveAccessibleName(new RegExp(label));
+  }
+});
+
+test('CLATTER Pocket offers its emulator, installer, source and website', async ({ page }) => {
+  await expect(page.locator('#tool-clatter-pocket .badge')).toHaveText('Experimental');
+  const card = page.locator('#tool-clatter-pocket .card-actions a');
+  await expect(card).toHaveText([/Emulator/, /Install/]);
+  await page.locator('#tool-clatter-pocket .btn--info').click();
+  const dialog = page.getByRole('dialog', { name: 'CLATTER Pocket' });
+  await expect(dialog.locator('.info-actions a')).toHaveText([/Emulator/, /Install/, /Source/, /Website/]);
+  for (const a of await dialog.locator('.info-actions a').all()) {
+    await a.scrollIntoViewIfNeeded();
+    await expect(a).toBeInViewport({ ratio: 1 });
   }
 });
 

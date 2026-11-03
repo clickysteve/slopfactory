@@ -303,6 +303,43 @@ export const projects: Project[] = [
     order: 2,
   },
   {
+    id: 'clatter-pocket',
+    name: 'CLATTER Pocket',
+    category: 'audio',
+    status: 'experimental',
+    platform: 'M-VAVE FM-1 firmware · browser emulator',
+    summary:
+      'A seven-voice drum synthesizer and generative sequencer for the M-VAVE FM-1, bringing the Erica Synths LXR sound engine to inexpensive portable hardware.',
+    description: [
+      'CLATTER Pocket is experimental, open-source firmware that turns the M-VAVE FM-1 into a seven-voice drum synthesizer and generative sequencer. It runs the Erica Synths LXR-02’s open-source sound engine on the device itself, so it is real drum synthesis rather than sample playback, with hands-on sound shaping, pattern sequencing, rhythm generation and mutation.',
+      'It is the hardware sibling of CLATTER, the browser-based drum synthesizer, and shares its engine and rhythm styles. Try it first in the browser emulator, which runs the same firmware on an emulated FM-1. Earlier builds have run on one FM-1, but no release has been verified on hardware yet, so install it only if you are prepared to recover the device. It is an independent project, not affiliated with Erica Synths or M-VAVE.',
+    ],
+    features: [
+      'Seven drum tracks on the LXR’s six voices, with 16 factory kits and kit generation',
+      'Generate, regenerate or mutate patterns in 11 rhythmic styles',
+      'The keyboard is the step sequencer: up to 64 steps, with conditions and variations',
+      'Live and step recording, DRUM and PITCH keyboards, MIDI notes and clock in',
+      'Nine projects saved on the device',
+      'Browser emulator, and a web installer for Chrome or Edge',
+    ],
+    inspiration: 'The Erica Synths LXR-02 drum synthesizer, whose open-source sound engine it runs, by way of CLATTER.',
+    tags: ['drums', 'firmware', 'generative'],
+    links: {
+      launch: 'https://clatter-pocket.allmyfriendsaresynths.com/demo/',
+      download: 'https://clatter-pocket.allmyfriendsaresynths.com/installer/',
+      source: 'https://github.com/clickysteve/clatter-pocket',
+      docs: 'https://clatter-pocket.allmyfriendsaresynths.com/',
+    },
+    linkLabels: { launch: 'Emulator', download: 'Install', docs: 'Website' },
+    screenshot: {
+      file: 'clatter-pocket',
+      alt: 'CLATTER Pocket on an emulated M-VAVE FM-1: the PATTERN screen shows a generated seven-track drum pattern playing, with that track’s steps lit orange on the keyboard below.',
+      source: 'Captured from the live demo (clatter-pocket.allmyfriendsaresynths.com/demo/) on 3 Nov 2026: a generated kit and pattern playing, SEQ page.',
+    },
+    featured: true,
+    order: 3,
+  },
+  {
     id: 'good-bits',
     name: 'The Good Bits',
     category: 'audio',
@@ -332,7 +369,7 @@ export const projects: Project[] = [
       source: 'Captured from the live app after processing a synthesised drum loop (Chop task, Drums, 1 bar).',
     },
     featured: true,
-    order: 3,
+    order: 4,
   },
   {
     id: 'loop-saboteur',
@@ -364,7 +401,7 @@ export const projects: Project[] = [
       position: 'top',
       source: 'docs/loop-saboteur-UI.png in the Loop Saboteur repository.',
     },
-    order: 4,
+    order: 5,
   },
   {
     id: 'grid-theory',
@@ -381,7 +418,7 @@ export const projects: Project[] = [
     tags: ['plugin', 'sequencer', 'MIDI'],
     links: {},
     availabilityNote: 'Not yet public',
-    order: 5,
+    order: 6,
   },
   {
     id: 'm8-librarian',
@@ -411,7 +448,7 @@ export const projects: Project[] = [
       alt: 'M8 Librarian showing the built-in demo card: a song’s instruments, sample dependencies and song grid in a dark window.',
       source: 'Captured from the live app using its synthetic demo card.',
     },
-    order: 6,
+    order: 7,
   },
   {
     id: 'pico-tracker-librarian',
@@ -442,7 +479,7 @@ export const projects: Project[] = [
       position: 'left top',
       source: 'screenshots/pattern-editor.png in the picoTracker Librarian repository.',
     },
-    order: 7,
+    order: 8,
   },
   {
     id: 'mega-tools',
@@ -472,7 +509,7 @@ export const projects: Project[] = [
       alt: 'The Mega-Tools landing page: a blue terminal-style index of renderer, ROM patcher, save and converter tools.',
       source: 'Captured from the live site.',
     },
-    order: 8,
+    order: 9,
   },
   {
     id: 'opennura',
@@ -493,7 +530,7 @@ export const projects: Project[] = [
       source: 'https://github.com/clickysteve/open-nura-mac',
       docs: 'https://iamsteve.in/2026/07/30/opennura-for-macos/',
     },
-    order: 9,
+    order: 10,
   },
   {
     id: 'amfas-music-library',
@@ -524,7 +561,7 @@ export const projects: Project[] = [
       position: 'top',
       source: 'Captured from the live site, scrolled to the track list.',
     },
-    order: 10,
+    order: 11,
   },
 
   // ── Video & Visual Tools ────────────────────────────────────────────────────────────────────

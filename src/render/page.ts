@@ -54,9 +54,10 @@ function actionLink(a: Action, p: Project, primary: boolean): string {
     source: ` code for ${p.name}`,
     docs: ` for ${p.name}`,
   };
+  const what = a.custom ? ` for ${p.name}` : hidden[a.kind];
   const cls = primary ? 'btn btn--primary' : 'btn';
   const arrow = a.kind === 'launch' ? '<span class="btn-arrow" aria-hidden="true">▸</span>' : '<span class="btn-arrow" aria-hidden="true">↗</span>';
-  return `<a class="${cls}" href="${esc(a.url)}"${NEW_TAB} data-action="${a.kind}">${esc(a.label)}${srOnly(`${hidden[a.kind]} (opens in a new tab)`)}${arrow}</a>`;
+  return `<a class="${cls}" href="${esc(a.url)}"${NEW_TAB} data-action="${a.kind}">${esc(a.label)}${srOnly(`${what} (opens in a new tab)`)}${arrow}</a>`;
 }
 
 function infoButton(p: Project): string {
@@ -91,7 +92,7 @@ function shot(p: Project, variant: 'thumb' | 'full'): string {
   const image = shotImage(p, variant);
   const link = screenshotLink(p);
   if (!link) return image;
-  const what = link.kind === 'launch' ? `Launch ${p.name}` : `Source code for ${p.name}`;
+  const what = link.custom ? `${link.label} for ${p.name}` : link.kind === 'launch' ? `Launch ${p.name}` : `Source code for ${p.name}`;
   return `<a class="shot-link" href="${esc(link.url)}"${NEW_TAB} tabindex="-1" data-label="${esc(link.label)} ${link.kind === 'launch' ? '▸' : '↗'}" data-shot="${link.kind}">${image}${srOnly(`${what} (opens in a new tab)`)}</a>`;
 }
 
